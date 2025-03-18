@@ -18,11 +18,24 @@ spec:
       containers:
       - image: mysql:8
         name: mysql
+        resources:
+            requests:
+              cpu: "500m"
+              memory: "256Mi"
+            limits:
+              cpu: "1Gi"
+              memory: "512Mi"
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: "Test@123"
+          valueFrom:
+            secretKeyRef:
+              key: mysqlsecrets
+              value: MYSQL_ROOT_PASSWORD
         - name: MYSQL_DATABASE
-          value: "bankappdb"
+          valueFrom:
+            secretKeyRef:
+              key: mysqlsecrets
+              value: MYSQL_DATABASE
         ports:
         - containerPort: 3306
           name: mysql
