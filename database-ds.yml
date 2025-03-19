@@ -29,12 +29,12 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              key: mysqlsecrets
+              key: bankappsecrets
               value: MYSQL_ROOT_PASSWORD
         - name: MYSQL_DATABASE
           valueFrom:
             secretKeyRef:
-              key: mysqlsecrets
+              key: bankappsecrets
               value: MYSQL_DATABASE
         ports:
         - containerPort: 3306
